@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         val tvCpt = findViewById<TextView>(R.id.tvCpt)
 
         //Modification texte
-        tvCpt.text = "1" //1.toString()
+        tvCpt.text = "" //1.toString()
         tvQuestion.text = "Quelle est la couleur du cheval blanc d'Henri IV ?"
         btR1.text = "Bleu"
         btR2.text = "Blanc"
@@ -31,19 +31,20 @@ class MainActivity : AppCompatActivity() {
 
 
         //Intent
-        val intent = Intent(this,MainActivity2::class.java)
+        val Myintent = Intent(this,MainActivity2::class.java)
 
         //Function affichant un toast et demarrant la prochaine activite
         fun toastintent(reponse: Boolean){
             if(reponse){
                 Toast.makeText(this,
                     "Bonne reponse", Toast.LENGTH_SHORT).show()
+                Myintent.putExtra("Cpt_bonnereponse",1) //"Enregistre la valeur dans l'intent"
             }
             else{
                 Toast.makeText(this,
                     "Mauvaise reponse", Toast.LENGTH_SHORT).show()
             }
-            startActivity(intent)
+            startActivity(Myintent)
         }
 
         //Button listener

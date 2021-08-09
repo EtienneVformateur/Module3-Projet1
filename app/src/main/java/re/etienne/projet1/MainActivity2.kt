@@ -22,35 +22,35 @@ class MainActivity2 : AppCompatActivity() {
         val tvCpt = findViewById<TextView>(R.id.tvCpt)
 
         //Modification texte
-        tvCpt.text = "2" //2.toString()
+        var cpt = intent.getIntExtra("Cpt_bonnereponse",0)
+        tvCpt.text = cpt.toString() //2.toString()
         tvQuestion.text = "Quelle est la meilleur équipe de foot française ?"
         btR1.text = "Jeanne D'arc"
         btR2.text = "OM"
         btR3.text = "Saint Louisienne"
         btR4.text = "La tamponnaise"
 
-
         //Intent
-        val intent = Intent(this,MainActivity::class.java)
+        val Myintent = Intent(this,MainActivity::class.java)
         
         //Alerte
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Merci ! ")
         builder.setCancelable(false) // Oblige le clique sur un bouton 
         builder.setPositiveButton("Oui") { dialog, which ->
-            startActivity(intent)
+            startActivity(Myintent)
         }
 
         //Function affichant un toast et demarrant la prochaine activite
         fun alertintent(reponse: Boolean){
-            
-            //builder.show() builder.setMessage("Rejouer ?")
+
             if(reponse){
-                builder.setMessage("Super! Bonne réponse ! Rejouer ?")
+                cpt ++
+                builder.setMessage("Super! Bonne réponse ! Vous avez eu $cpt bonnes réponses ! Rejouer ?")
                 builder.show()
             }
             else{
-                builder.setMessage("Mince! Mauvaise réponse ! Rééssayer ?")
+                builder.setMessage("Mince! Vous avez eu $cpt bonnes réponses ! Mauvaise réponse ! Rééssayer ?")
                 builder.show()
             }
         }
