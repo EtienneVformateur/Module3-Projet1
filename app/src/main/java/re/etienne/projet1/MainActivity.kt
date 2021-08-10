@@ -3,12 +3,14 @@ package re.etienne.projet1
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -20,6 +22,11 @@ class MainActivity : AppCompatActivity() {
         val btR4 = findViewById<Button>(R.id.btR4)
         val tvQuestion = findViewById<TextView>(R.id.tvQuestion)
         val tvCpt = findViewById<TextView>(R.id.tvCpt)
+        val btVersion = findViewById<Button>(R.id.btversion)
+
+        btVersion.text = "Version 2"
+        btVersion.setOnClickListener { val intentActivity3 = Intent(this,MainActivity3::class.java)
+            startActivity(intentActivity3) }
 
         //Modification texte
         tvCpt.text = "" //1.toString()
@@ -54,4 +61,5 @@ class MainActivity : AppCompatActivity() {
         btR4.setOnClickListener { toastintent(false)}
 
     }
+
 }
